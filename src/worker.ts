@@ -32,7 +32,7 @@ export default {
 // 核心日期配置
 const DATES = {
   met: '2020-08-21',
-  married: '2021-01-18',
+  married: '2022-01-18',
   baby: '2024-12-30'
 };
 
