@@ -27,9 +27,9 @@ class RoseAnimation {
   }
   
   init() {
-    // 根据屏幕大小调整粒子数量
+    // 根据屏幕大小调整粒子数量（增加到原来的 2-3 倍）
     const isMobile = window.innerWidth < 768;
-    const baseCount = isMobile ? 15 : 30;
+    const baseCount = isMobile ? 40 : 80;
     
     for (let i = 0; i < baseCount; i++) {
       this.petals.push(this.createPetal());
@@ -40,13 +40,13 @@ class RoseAnimation {
     return {
       x: Math.random() * this.canvas.width,
       y: Math.random() * this.canvas.height - this.canvas.height,
-      size: Math.random() * 15 + 10,
+      size: Math.random() * 25 + 20, // 增大尺寸：20-45px
       speedY: Math.random() * 1 + 0.5,
       speedX: Math.random() * 0.5 - 0.25,
       rotation: Math.random() * 360,
       rotationSpeed: Math.random() * 2 - 1,
-      opacity: Math.random() * 0.5 + 0.3,
-      emoji: Math.random() > 0.3 ? '🌹' : '🌸'
+      opacity: Math.random() * 0.6 + 0.4, // 提高透明度
+      emoji: Math.random() > 0.2 ? '🌹' : '🌸' // 更多玫瑰
     };
   }
   
@@ -79,8 +79,8 @@ class RoseAnimation {
   
   increaseIntensity() {
     // 玫瑰雨效果：增加强度和数量
-    this.intensity = 2;
-    const additionalPetals = window.innerWidth < 768 ? 10 : 20;
+    this.intensity = 2.5;
+    const additionalPetals = window.innerWidth < 768 ? 30 : 60;
     
     for (let i = 0; i < additionalPetals; i++) {
       this.petals.push(this.createPetal());
@@ -89,7 +89,7 @@ class RoseAnimation {
     // 5 秒后恢复正常
     setTimeout(() => {
       this.intensity = 1;
-      this.petals = this.petals.slice(0, window.innerWidth < 768 ? 15 : 30);
+      this.petals = this.petals.slice(0, window.innerWidth < 768 ? 40 : 80);
     }, 5000);
   }
 }
