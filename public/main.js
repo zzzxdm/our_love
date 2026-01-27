@@ -45,8 +45,7 @@ function updateStats() {
   const metHours = Math.floor((metDiff % 86400000) / 3600000);
   const metMinutes = Math.floor((metDiff % 3600000) / 60000);
   
-  document.getElementById('metDays').innerHTML = 
-    `<span class="number">${metDays}</span> 天 <span class="number">${metHours}</span> 小时 <span class="number">${metMinutes}</span> 分钟`;
+  document.getElementById('metDays').innerHTML = `<span class="number">${metDays}</span> 天`;
   
   // 结婚天数
   const marriedDate = new Date(DATES.married + 'T00:00:00');
