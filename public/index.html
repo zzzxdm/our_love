@@ -8,6 +8,16 @@
 </head>
 <body>
   <canvas id="roseCanvas"></canvas>
+
+  <audio id="bgm" src="/music/黄霄雲-星辰大海.mp3" loop preload="auto"></audio>
+  <button class="music-toggle is-paused" id="musicToggle" aria-label="音乐已暂停" title="音乐已暂停" aria-pressed="false">
+    <span class="music-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" role="img" focusable="false">
+        <path d="M9 5v10.2A3.5 3.5 0 1 0 11 19V9l8-2.2V5z"/>
+      </svg>
+    </span>
+    <span class="music-label">暂停</span>
+  </button>
   
   <div class="container">
     <header class="hero">

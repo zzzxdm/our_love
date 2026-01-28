@@ -83,6 +83,45 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // 点击交互：生成玫瑰粒子
   document.addEventListener('click', createClickRose);
+
+  // Background music
+  const bgm = document.getElementById('bgm');
+  const musicToggle = document.getElementById('musicToggle');
+
+  function setMusicState(isPlaying) {
+    if (!musicToggle) return;
+    musicToggle.classList.toggle('is-playing', isPlaying);
+    musicToggle.classList.toggle('is-paused', !isPlaying);
+    musicToggle.setAttribute('aria-pressed', String(isPlaying));
+    const label = isPlaying ? '播放' : '暂停';
+    musicToggle.setAttribute('aria-label', `音乐已${label}`);
+    musicToggle.setAttribute('title', `音乐已${label}`);
+    const labelEl = musicToggle.querySelector('.music-label');
+    if (labelEl) labelEl.textContent = label;
+  }
+
+  function tryAutoPlay() {
+    if (!bgm) return;
+    const playPromise = bgm.play();
+    if (playPromise && typeof playPromise.then === 'function') {
+      playPromise.then(() => setMusicState(true)).catch(() => setMusicState(false));
+    } else {
+      setMusicState(!bgm.paused);
+    }
+  }
+
+  if (musicToggle && bgm) {
+    musicToggle.addEventListener('click', () => {
+      if (bgm.paused) {
+        bgm.play().then(() => setMusicState(true)).catch(() => setMusicState(false));
+      } else {
+        bgm.pause();
+        setMusicState(false);
+      }
+    });
+  }
+
+  tryAutoPlay();
 });
 
 // 点击生成玫瑰效果
