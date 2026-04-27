@@ -155,6 +155,15 @@ body {
   opacity: 0.8;
 }
 
+.signature-heart {
+  color: #e53935;
+  -webkit-text-fill-color: #e53935;
+  background: none;
+  display: inline-block;
+  margin: 0 0.08em;
+  transform: translateY(0.02em);
+}
+
 .subtitle {
   font-size: clamp(1rem, 3vw, 1.3rem);
   color: #666;
